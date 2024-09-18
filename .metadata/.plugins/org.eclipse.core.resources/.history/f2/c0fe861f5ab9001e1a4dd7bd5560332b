@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class cace01_2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		ArrayList<String>[][] name=new ArrayList[3][1];
+		//ArrayList<Integer>[][] number = new ArrayList[3][2];
+		name[0][0]=new ArrayList<String>();
+		name[0][0].add("aaa");
+		name[0][0].add("bbb");
+		name[0][0].add("ccc");
+		
+		name[1][0]=new ArrayList<String>();
+		name[1][0].add("xxx");
+		name[1][0].add("yyy");
+		
+		name[2][0]=new ArrayList<String>();
+		name[2][0].add("abc");
+		name[2][0].add("bcd");
+		name[2][0].add("cde");
+		name[2][0].add("def");
+		
+		/*number[0][0]=new ArrayList<Integer>();
+		number[0][0].add(12131111);
+		number[0][0].add(12131112);
+		number[0][0].add(12131113);
+		
+		number[0][1]=new ArrayList<Integer>();
+		number[0][1].add(12132222);
+		number[0][1].add(12132223);
+		
+		number[0][2]=new ArrayList<Integer>();
+		number[0][2].add(12133333);
+		number[0][2].add(12133334);
+		number[0][2].add(12133335);
+		number[0][2].add(12133336);*/
+		
+		show(name);
+
+	}
+	//顯示所有名單
+		public static void show(ArrayList<String>[][] a) {
+			for(int i=0;i<a.length;i++) {
+				for(int j=0;j<a[i].length;j++) {
+						System.out.print(a[i][j]+" ");
+				}
+				System.out.println();
+			}
+		}
+
+}

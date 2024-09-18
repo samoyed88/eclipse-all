@@ -1,0 +1,13 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class cace01_2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		ArrayList<String> name = new ArrayList<String>();
+		ArrayList<> number = new ArrayList<integer>();
+		
+
+	}
+
+}

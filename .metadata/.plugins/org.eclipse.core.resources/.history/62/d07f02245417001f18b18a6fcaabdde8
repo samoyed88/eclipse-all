@@ -1,0 +1,24 @@
+package test1;
+
+public class Book{
+	String c_name,e_name;
+	Book(){
+		this.c_name="";
+		this.e_name="";
+	}
+	Book(String c,String e){
+		this.c_name=c;
+		this.e_name=e;
+	}
+	void setCname(String c) {
+		this.c_name=c;
+	}
+	void setEname(String e) {
+		this.e_name=e;
+	}
+	void showdata() {
+		System.out.println("中文:"+c_name);
+		System.out.println("英文:"+e_name);
+	}
+	
+}

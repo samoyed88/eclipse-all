@@ -1,0 +1,19 @@
+import flag.*;
+import flag.grandict.*;
+import flag.subdict.*;
+
+public class calArea {
+
+	public static void main(String[] args) {
+		Circle c=new Circle(5);
+		c.setprice(10);
+		Square s=new Square(2);
+		s.setprice(10);
+		Cylinder cy=new Cylinder(5,10);
+		cy.setprice(10);
+		Rectangle r=new Rectangle(2,4);
+		r=setprice(5);
+		
+	}
+
+}

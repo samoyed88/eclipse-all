@@ -1,0 +1,149 @@
+package excel;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.*;
+
+public class excelcase01_1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<String>[] number = new ArrayList[13];
+		ArrayList<String>[] name = new ArrayList[13];
+		ArrayList<String>[] number2 = new ArrayList[13];
+		ArrayList<String>[] name2 = new ArrayList[13];
+		number = numcreation();
+		number2 = numcreation();
+		name = namecreation();
+		name2 = namecreation();
+		int count = 2;
+		// 顯示所有人
+		show(name2, number2);
+		// 請假者刪除(不會抽到)
+		System.out.println("請輸入請假或缺席者學號，如果輸入完成請輸入N或n");
+		String str = sc.next();
+		while (!str.equalsIgnoreCase("n")) {
+			search(number2, str , name2);
+			str = sc.next();
+		}
+		// 顯示所有人
+		show(name2, number2);
+		// 抽籤系統
+		int num = (int) (Math.random() * 10);// 隨機一個1~10的數字
+		System.out.println("第1次抽籤名單");
+		random(name2, num);
+		System.out.println("輸入任意字可重抽，N退出");
+		str = sc.next();
+		// 重複抽籤
+		while (!str.equalsIgnoreCase("n")) {
+			System.out.println("第" + count + "次抽籤名單");
+			random(name2,++num);
+			System.out.println("輸入任意字可重抽，N退出");
+			str = sc.next();
+			count++;
+		}
+		// 最原始的名單
+		show(name, number);
+	}
+
+	public static ArrayList<String>[] numcreation() {
+		ArrayList<String>[] num = new ArrayList[13];
+		for (int i = 0; i < 13; i++) {
+			num[i] = new ArrayList<String>();
+		}
+		int count = 0;
+		// 使用try-catch語句來處理可能發生的異常
+		try {
+			// 使用Apache POI庫中的XSSFWorkbook類別來建立一個Excel工作簿的物件，並從指定的檔案路徑中讀取檔案內容
+			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(
+					new FileInputStream("C:\\Users\\befor\\OneDrive - Ming Chuan University\\Documents\\test.xlsx"));
+			// 使用xssfWorkbook物件的getSheetAt方法來取得第一個工作表(sheet)的物件，並存入sheet變數中
+			XSSFSheet sheet = xssfWorkbook.getSheetAt(0);
+			// 使用sheet物件的getLastRowNum方法來取得工作表中的最大行數，並存入maxRow變數中
+			int maxRow = sheet.getLastRowNum();
+			// 使用for迴圈來遍歷工作表中的每一行(row)，從第0行開始，到最大行數結束，每次遞增1
+			for (int row = 0; row <= maxRow; row++) {
+				XSSFCell cell = sheet.getRow(row).getCell(0);
+				num[count / 4].add(cell.toString());
+				count++;
+			}
+			// 如果發生IOException異常，則捕捉並印出異常的堆疊追蹤
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
+
+	public static ArrayList<String>[] namecreation() {
+		ArrayList<String>[] name = new ArrayList[13];
+		for (int i = 0; i < 13; i++) {
+			name[i] = new ArrayList<String>();
+		}
+		int count = 0;
+		// 使用try-catch語句來處理可能發生的異常
+		try {
+			// 使用Apache POI庫中的XSSFWorkbook類別來建立一個Excel工作簿的物件，並從指定的檔案路徑中讀取檔案內容
+			XSSFWorkbook xssfWorkbook = new XSSFWorkbook(
+					new FileInputStream("C:\\Users\\befor\\OneDrive - Ming Chuan University\\Documents\\test.xlsx"));
+			// 使用xssfWorkbook物件的getSheetAt方法來取得第一個工作表(sheet)的物件，並存入sheet變數中
+			XSSFSheet sheet = xssfWorkbook.getSheetAt(0);
+			// 使用sheet物件的getLastRowNum方法來取得工作表中的最大行數，並存入maxRow變數中
+			int maxRow = sheet.getLastRowNum();
+			// 使用for迴圈來遍歷工作表中的每一行(row)，從第0行開始，到最大行數結束，每次遞增1
+			for (int row = 0; row <= maxRow; row++) {
+				// 將當前行的序號印出到控制台，並用分隔線來區分
+				XSSFCell cell2 = sheet.getRow(row).getCell(1);
+				name[count / 4].add(cell2.toString());
+				count++;
+			}
+			// 如果發生IOException異常，則捕捉並印出異常的堆疊追蹤
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return name;
+	}
+
+	// 隨機抽一組名單
+	public static void random(ArrayList<String>[] name, int num) {
+		for (int i = 0; i < name.length; i++) {
+			num %= name[i].size(); // 隨機數除小組人數的餘數
+			System.out.print("本次抽到的為：");
+			System.out.println("第" + (i + 1) + "組" + name[i].get(num));
+		}
+	}
+
+	// 搜尋某學號並且刪除
+	public static void search(ArrayList<String>[] number, String input, ArrayList<String>[] name) {
+		int num = -1;
+		// outer為標籤
+		outer: for (int i = 0; i < number.length; i++) {
+			for (int j = 0; j < number[i].size(); j++) {
+				num = number[i].indexOf(input);
+				if (num != -1) {
+					name[i].remove(num);
+					number[i].remove(num);
+					break outer; // 跳出外層迴圈(標籤為outer的迴圈)
+				}
+			}System.out.print("找無此人，請重新輸入");
+		}
+	}
+
+	// 顯示所有名單
+	public static void show(ArrayList<String>[] name, ArrayList<String>[] number) {
+		System.out.println("顯示所有人");
+		for (int i = 0; i < name.length; i++) {
+			System.out.println("第"+(i+1)+"組：");
+				for (int j = 0; j < name[i].size(); j++) {
+					System.out.print(name[i].get(j) + " " + number[i].get(j)+" ");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
+}

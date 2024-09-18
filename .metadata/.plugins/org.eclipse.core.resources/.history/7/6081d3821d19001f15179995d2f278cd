@@ -1,0 +1,10 @@
+package flag.subdict;
+import flag.*;
+
+public class Circle extends Shape{
+	private int radius;
+	private final double PI=3.14;
+	public double calArea() {
+		return PI * radius * radius ;
+	}
+}

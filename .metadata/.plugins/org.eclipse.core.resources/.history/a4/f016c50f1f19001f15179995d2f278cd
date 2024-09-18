@@ -1,0 +1,15 @@
+package flag.grandict;
+
+public class Cuboid extends Rectangle{
+	protected int height;
+	public Cuboid() {
+		this(0,0,0);
+	}
+	public Cuboid(int l,int w,int h) {
+		super(l,w);
+		this.height=h;
+	}
+	public double calArea() {
+		return length*width*height;
+	}
+}

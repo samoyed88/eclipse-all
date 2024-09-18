@@ -1,0 +1,16 @@
+package flag.grandict;
+import flag.subdict.*;
+
+public class Cylinder extends Circle{
+	private int height;
+	public Cylinder() {
+		super();
+		this(0);
+	}
+	public Cylinder(int h) {
+		this.height=h;
+	}
+	public double calArea() {
+		return 2*super.calArea()+height*(2*PI*radius);
+	}
+}

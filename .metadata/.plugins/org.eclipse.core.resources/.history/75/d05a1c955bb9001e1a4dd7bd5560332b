@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+public class cace01_2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		ArrayList<String>[] name=new ArrayList[3];
+		ArrayList<Integer>[] number = new ArrayList[3];
+		name[0]=new ArrayList<String>();
+		name[0].add("aaa");
+		name[0].add("bbb");
+		name[0].add("ccc");
+		
+		name[1]=new ArrayList<String>();
+		name[1].add("xxx");
+		name[1].add("yyy");
+		
+		name[2]=new ArrayList<String>();
+		name[2].add("abc");
+		name[2].add("bcd");
+		name[2].add("cde");
+		name[2].add("def");
+		
+		
+		number[0]=new ArrayList<Integer>();
+		number[0].add(12131111);
+		number[0].add(12131112);
+		number[0].add(12131113);
+		
+		number[1]=new ArrayList<Integer>();
+		number[1].add(12132222);
+		number[1].add(12132223);
+		
+		number[1]=new ArrayList<Integer>();
+		number[1].add(12133333);
+		number[1].add(12133334);
+		number[1].add(12133335);
+		number[1].add(12133336);
+		int i=0;
+		System.out.print(name[i].get(i)+" "+number[i].get(i));
+		//show(name,number);
+
+	}
+	//顯示所有名單
+		public static void show(ArrayList<String>[] a,ArrayList<Integer>[] b) {
+			for(int i=0;i<a.length;i++) {
+				System.out.print(a[i].get(i)+" "+b[i].get(i));	
+			}
+			System.out.println();
+		}
+
+}

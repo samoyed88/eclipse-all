@@ -1,0 +1,6 @@
+package flag.subdict;
+package flag.subdict;
+
+public class Circle extends Sgape{
+	
+}

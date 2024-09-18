@@ -1,0 +1,24 @@
+import java.util.*;
+public class test_1212 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner (System.in);
+		int A[][]=new int[2][3];
+		for(int i=0;i<A.length;i++) {
+			for(int j=0;j<A[i].length;j++) {
+				A[i][j]=sc.nextInt();
+			}
+		}
+		test(A);
+		
+	}
+	public static void test(int c[][]) {
+		for(int i=0;i<c.length;i++) {
+			for(int j=0;j<c[i].length;j++) {
+			System.out.print(c[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+
+}

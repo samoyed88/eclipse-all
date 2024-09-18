@@ -1,0 +1,36 @@
+package Player;
+import java.util.*;
+
+interface Math{
+	int add();
+	int sub();
+	int mul();
+	int div();
+}
+class MathImp implements Math{
+	int a,b;
+	public int add(){
+		return a+b;
+	}
+	public int sub(){
+		return a-b;
+	}
+	public int mul(){
+		return a*b;
+	}
+	public int div(){
+		return a/b;
+	}
+}
+
+public class math_test {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		MathImp m=new MathImp();
+		m.a=sc.nextInt();
+		m.b=sc.nextInt();
+		System.out.println(m.add()+" "+m.sub()+" "+m.mul()+" "+m.div());
+	}
+
+}
